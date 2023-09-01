@@ -1,0 +1,62 @@
+{% extends 'employee_navbar.html' %}
+{% load static %}
+{% block title %} Petrol Pump Management System {% endblock %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<body style="background-color:#9ED2BE">
+<div class="container">
+    <form method="POST"> {% csrf_token %}
+
+    <div class="row mt-4">
+        <div class="form-group col-md-12">
+            <label><i style="font-weight: bold;">Machine No</i></label>
+            <input type="text" class="form-control mt-2" name="mid" placeholder="Enter Machine ID" value="{{machine.machine_no}}" readonly>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="form-group col-md-6">
+            <label><i style="font-weight: bold;">Type</i></label>
+            <select name="type" class="form-control mt-2" required>
+            <option value="{{machine.machine_type}}">{{machine.machine_type}}</option>
+            <option value="">Select Machine Type</option>
+            <option value="Petrol">Petrol</option>
+            <option value="Diesel">Diesel</option>
+            <option value="CNG">CNG</option>
+            <option value="Power Petrol">Power Petrol</option>
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label><i style="font-weight: bold;">Company</i></label>
+            <input type="text" class="form-control mt-2" name="company" placeholder="Enter machine company" value="{{machine.machine_company}}" required>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="form-group col-md-6">
+            <label><i style="font-weight: bold;">Description</i></label>
+            <input type="text" class="form-control mt-2" name="desc" placeholder="Enter Description of Machine" value="{{machine.machine_desc}}" required>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="form-group col-md-6">
+            <label><i style="font-weight: bold;">Price</i></label>
+            <input type="number" class="form-control mt-2" name="price" placeholder="Enter Price of Machine" required value="{{machine.machine_price}}" min="0">
+        </div>
+    </div>
+    <input type="hidden" name="uid" value="{{request.session.owner_id}}">
+    <button type="submit" class="btn btn-success mt-4">Update Machine</button>
+</form>
+</div>
+</body>
+{% endblock %}
+{% block js %}
+<script>
+    {% if alert %}
+    alert("Machine is updated successfully.")
+    document.location = "/view_all_machines"
+    {% endif %}
+</script>
+{% endblock %}

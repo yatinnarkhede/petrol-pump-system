@@ -1,0 +1,52 @@
+{% extends 'employee_navbar.html' %}
+{% load static %}
+{% block title %} Petrol Pump Management System {% endblock %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<body style="background-color:#9ED2BE">
+<div class="container">
+    <form method="POST"> {% csrf_token %}
+
+    <div class="row mt-4">
+        <div class="form-group col-md-6">
+            <label><i style="font-weight: bold;">First Name</i></label>
+            <input type="text" class="form-control mt-2" name="first_name" placeholder="Enter supplier first name" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label><i style="font-weight: bold;">Last Name</i></label>
+            <input type="text" class="form-control mt-2" name="last_name" placeholder="Enter supplier last name" required>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="form-group col-md-6">
+            <label><i style="font-weight: bold;">Address</i></label>
+            <input type="text" class="form-control mt-2" name="address" placeholder="Enter Address of Supplier" required>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="form-group col-md-6">
+            <label><i style="font-weight: bold;">Phone</i></label>
+            <input type="text" class="form-control mt-2" name="phone" placeholder="Enter Phone of Supplier" required pattern="^[6789]\d{9}$">
+        </div>
+        <div class="form-group col-md-6">
+            <label><i style="font-weight: bold;">Email</i></label>
+            <input type="email" class="form-control mt-2" name="email" placeholder="Enter Email of Supplier" required>
+        </div>
+    </div>
+    <input type="hidden" name="uid" value="{{request.session.owner_id}}">
+    <button type="submit" class="btn btn-success mt-4">Add Supplier</button>
+</form>
+</div>
+</body>
+{% endblock %}
+{% block js %}
+<script>
+    {% if alert %}
+    alert("Supplier is added successfully.")
+    document.location = "/view_all_suppliers"
+    {% endif %}
+</script>
+{% endblock %}

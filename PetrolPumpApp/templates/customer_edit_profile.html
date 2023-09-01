@@ -1,0 +1,46 @@
+{% extends 'customer_navbar.html' %}
+
+{% block title %} Customer Edit Profile {% endblock %}
+
+{% block css %}
+{% endblock %}
+{% block body %}
+<body style="background-color:#9ED2BE">
+<div class="container">
+    <form method="POST"> {% csrf_token %}
+        <div class="row mt-4">
+    <div class="form-group col-md-6">
+        <label><i style="font-weight: bold;">First Name</i></label>
+        <input type="text" class="form-control mt-2" name="first_name" value="{{user.first_name}}">
+    </div>
+    <div class="form-group col-md-6">
+        <label><i style="font-weight: bold;">Last Name</i></label>
+        <input type="text" class="form-control mt-2" name="last_name" value="{{user.last_name}}">
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="form-group col-md-6">
+        <label><i style="font-weight: bold;">Email</i></label>
+        <input type="email" class="form-control mt-2" name="email" value="{{user.email}}">
+    </div>
+    <div class="form-group col-md-6">
+        <label><i style="font-weight: bold;">Mobile Number</i></label>
+        <input type="number" class="form-control mt-2" name="phone" value="{{user.customer.phone}}">
+    </div>
+</div>
+
+    <button type="submit" class="btn btn-success mt-5">Update Customer Profile</button>
+</form>
+</div>
+</body>
+{% endblock %}
+
+{% block js %}
+<script>
+    {% if alert %}
+    alert("Customer Profile Updated Successfully.")
+    document.location = "/customer_profile"
+    {% endif %}
+</script>
+{% endblock %}

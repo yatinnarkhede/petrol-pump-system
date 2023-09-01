@@ -1,0 +1,31 @@
+{% extends 'customer_navbar.html' %}
+{% load static %}
+{% block title %} Petrol Pump Management System {% endblock %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<body style="background-color:#9ED2BE">
+<div class="container">
+    <form method="POST"> {% csrf_token %}
+
+    <div class="row mt-4">
+        <div class="form-group col-md-12">
+            <label><i style="font-weight: bold;">Feedback</i></label>
+            <input type="text" class="form-control mt-2" name="feedback_message" required>
+        </div>
+    </div>
+
+    <input type="hidden" name="uid" value="{{uid}}">
+    <button type="submit" class="btn btn-warning mt-4">Post Feedback</button>
+</form>
+</div>
+</body>
+{% endblock %}
+{% block js %}
+<script>
+    {% if alert %}
+    alert("Your feedback is posted successfully.")
+    document.location = "/view_all_pumps_feedback"
+    {% endif %}
+</script>
+{% endblock %}

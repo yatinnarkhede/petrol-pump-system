@@ -1,0 +1,54 @@
+{% extends 'owner_navbar.html' %}
+{% load static %}
+{% block title %} Petrol Pump Management System {% endblock %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<body style="background-color:#9ED2BE">
+<div class="container">
+    <form method="POST"> {% csrf_token %}
+
+    <div class="row mt-4">
+        <div class="form-group col-md-12">
+            <label><i style="font-weight: bold;">Carbon Monoxide</i></label>
+            <input type="text" class="form-control mt-2" name="carbon_monoxide" placeholder="Enter Carbon Monoxide" required>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="form-group col-md-12">
+            <label><i style="font-weight: bold;">Hydro Carbon</i></label>
+            <input type="text" class="form-control mt-2" name="hydro_carbon" placeholder="Enter Hydro Carbon" required>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="form-group col-md-12">
+            <label><i style="font-weight: bold;">Methane HC</i></label>
+            <input type="text" class="form-control mt-2" name="methane_hc" placeholder="Enter Methane Hydro Carbon" required>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="form-group col-md-12">
+            <label><i style="font-weight: bold;">Reactive HC</i></label>
+            <input type="text" class="form-control mt-2" name="reactive_hc" placeholder="Enter Reactive Hydro Carbon" required>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="form-group col-md-12">
+            <label><i style="font-weight: bold;">Charges</i></label>
+            <input type="number" class="form-control mt-2" name="charges" placeholder="Enter PUC Charges" min="0" required>
+        </div>
+    </div>
+    <input type="hidden" name="id" value="{{id}}">
+    <button type="submit" class="btn btn-warning mt-4">Generate PUC</button>
+</form>
+</div>
+</body>
+{% endblock %}
+{% block js %}
+<script>
+    {% if alert %}
+    alert("PUC generated successfully.")
+    document.location = "/view_pucs"
+    {% endif %}
+</script>
+{% endblock %}

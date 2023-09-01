@@ -1,0 +1,41 @@
+{% extends 'employee_navbar.html' %}
+{% load static %}
+{% block title %} Petrol Pump Management System {% endblock %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<body style="background-color:#9ED2BE">
+<div class="container mt-4">
+    <h1 class="text-center"><u>Received Booking Slots</u></h1>
+    <table class="table table-hover" id="example">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Slot Date</th>
+                <th>Time</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Customer</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in slots %}
+            <tr>
+                <td>{{s.id}}.</td>
+                <td>{{s.slot_date}}</td>
+                <td>{{s.slot_time}}</td>
+                <td>{{s.slot_type}}</td>
+                <td>{{s.status}}</td>
+                <td>{{s.customer.user.get_full_name}}</td>
+                <td>
+                    <a href="/accept/{{s.id}}/" class="btn btn-danger" title="Accept Booking"><i class="fa fa-check" aria-hidden="true"></i></a>
+                    <a href="/reject/{{s.id}}/" class="btn btn-danger" title="Reject Booking"><i class="fa fa-ban" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</body>
+{% endblock %}

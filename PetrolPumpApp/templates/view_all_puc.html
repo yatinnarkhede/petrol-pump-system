@@ -1,0 +1,52 @@
+{% extends 'customer_navbar.html' %}
+{% load static %}
+{% block title %} Petrol Pump Management System {% endblock %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<body style="background-color:#9ED2BE">
+<div class="container mt-4">
+    <h1 class="text-center"><u>My Applied PUCs</u></h1>
+    <table class="table table-hover" id="example">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Vehicle#</th>
+                <th>Apply Date</th>
+                <th>Issue Date</th>
+                <th>Expiry Date</th>
+                <th>Co Monoxide</th>
+                <th>Hydro Carbon</th>
+                <th>Methane HC</th>
+                <th>Reactive HC</th>
+                <th>Charges</th>
+                <th>Status</th>
+                <th>Pump</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in pucs %}
+            <tr>
+                <td>{{p.id}}.</td>
+                <td>{{p.vehicle_no}}</td>
+                <td>{{p.date_of_apply}}</td>
+                <td>{{p.date_of_issue}}</td>
+                <td>{{p.date_of_expiry}}</td>
+                <td>{{p.carbon_monoxide}}</td>
+                <td>{{p.hydro_carbon}}</td>
+                <td>{{p.methane_hc}}</td>
+                <td>{{p.reactive_hc}}</td>
+                <td>{{p.charges}}</td>
+                <td>{{p.status}}</td>
+                <td>{{p.owner.pump_name}}</td>
+                <td>
+                    <a href="/view_puc/{{p.id}}/" class="btn btn-danger" title="View PUC Certificate">View PUC</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</body>
+{% endblock %}

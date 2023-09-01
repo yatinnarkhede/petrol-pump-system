@@ -1,0 +1,45 @@
+{% extends 'owner_navbar.html' %}
+
+{% block title %} Owner Edit Profile {% endblock %}
+
+{% block css %}
+{% endblock %}
+{% block body %}
+<body style="background-color:#9ED2BE">
+<div class="container">
+    <form method="POST"> {% csrf_token %}
+<div class="row mt-4">
+    <div class="form-group col-md-6">
+        <label><i style="font-weight: bold;">Email</i></label>
+        <input type="email" class="form-control mt-2" name="email" value="{{user.email}}">
+    </div>
+    <div class="form-group col-md-6">
+        <label><i style="font-weight: bold;">Mobile Number</i></label>
+        <input type="number" class="form-control mt-2" name="phone" value="{{user.owner.phone}}">
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="form-group col-md-6">
+        <label><i style="font-weight: bold;">Pump Name</i></label>
+        <input type="text" class="form-control mt-2" name="pump_name" value="{{user.owner.pump_name}}">
+    </div>
+    <div class="form-group col-md-6">
+        <label><i style="font-weight: bold;">Pump Address</i></label>
+        <input type="text" class="form-control mt-2" name="address" value="{{user.owner.address}}">
+    </div>
+</div>
+    <button type="submit" class="btn btn-success mt-5">Update Owner Profile</button>
+</form>
+</div>
+</body>
+{% endblock %}
+
+{% block js %}
+<script>
+    {% if alert %}
+    alert("Owner Profile Updated Successfully.")
+    document.location = "/owner_profile"
+    {% endif %}
+</script>
+{% endblock %}

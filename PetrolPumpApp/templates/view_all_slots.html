@@ -1,0 +1,36 @@
+{% extends 'customer_navbar.html' %}
+{% load static %}
+{% block title %} Petrol Pump Management System {% endblock %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<body style="background-color:#9ED2BE">
+<div class="container mt-4">
+    <h1 class="text-center"><u>My Booked Slots</u></h1>
+    <table class="table table-hover" id="example">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Slot Date</th>
+                <th>Time</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Pump</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in slots %}
+            <tr>
+                <td>{{s.id}}.</td>
+                <td>{{s.slot_date}}</td>
+                <td>{{s.slot_time}}</td>
+                <td>{{s.slot_type}}</td>
+                <td>{{s.status}}</td>
+                <td>{{s.owner.pump_name}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</body>
+{% endblock %}

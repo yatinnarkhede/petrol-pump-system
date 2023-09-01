@@ -1,0 +1,34 @@
+{% extends 'owner_navbar.html' %}
+{% load static %}
+{% block title %} Petrol Pump Management System {% endblock %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<body style="background-color:#9ED2BE">
+<div class="container mt-4">
+    <h1 class="text-center"><u>My Received Feedbacks</u></h1>
+    <table class="table table-hover" id="example">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Feedback Date</th>
+                <th>Message</th>
+                <th>Customer</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for f in feedbacks %}
+            <tr>
+                <td>{{f.id}}.</td>
+                <td>{{f.feedback_date}}</td>
+                <td>{{f.feedback_message}}</td>
+                <td>{{f.customer.user.get_full_name}}</td>
+                <td><a href="/delete_feedback/{{f.id}}/" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this supplier?')" title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</body>
+{% endblock %}

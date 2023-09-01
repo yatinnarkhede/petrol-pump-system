@@ -1,0 +1,63 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block title %} Petrol Pump Management System {% endblock %}
+{% block css %}
+{% endblock %}
+{% block body %}
+
+<div>
+    <div id="carouselExampleIndicators" class="carousel slide">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src=".\media\1000_F_103069113_CfPgQFfYrMdF8ykyLFZxmQ6OkDvIaUbd.jpg" class="d-block w-100 h-60" style="height: 650px" alt="petrol1">
+    </div>
+    <div class="carousel-item">
+      <img src=".\media\view-woman-with-car-gas-station.jpg" class="d-block w-100" style="height: 650px" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src=".\media\1000_F_133660124_yZjzc5qYbfwnfqDrnDwmnTz3kH6buYyj.jpg" class="d-block w-100" style="height: 650px" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+</div>
+<div class="p-4 bg-light">
+    <div class="container-fluid py-3">
+        <h1 class="display-5 fw-bold">Welcome to Petrol Pump System</h1>
+        <p class="col-md-8 fs-4">You can register as pump-owner/customer. Pump owner can manage employees/machines/suppliers/customer. Customer can book slot & apply for PUC.</p>
+        <a href="/owner_registration/" class="btn btn-warning btn-lg mx-3">Register as Pump Owner</a>
+        <a href="/customer_registration/" class="btn btn-warning btn-lg">Register as Customer</a>
+    </div>
+    <br>
+    <div class="container">
+  <div class="row">
+
+    <div class="col-lg-4 shadow-lg p-3 mb-5 bg-body-tertiary rounded " >
+      <img src="{% static 'pump-employee.jpg' %}" width="150" height="150" style="margin-left:135px" alt=""><br><br>
+        <a class="btn btn-info " href="/employee_login/" style="margin-left:145px" title="Employee Login">Employee</a>
+    </div>
+
+    <div class="col-lg-4 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+      <img src="{% static 'pump-owner.jpg' %}" width="150" height="150" style="margin-left:135px" alt=""><br><br>
+      <a class="btn btn-info " href="/owner_login/" style="margin-left:155px" title="Pump Owner Login">Pump Owner</a>
+    </div>
+    <div class="col-lg-4 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+      <img src="{% static 'pump-customer.jpg' %}" width="150" style="margin-left:135px" height="150" alt=""><br><br>
+      <a class="btn btn-info" href="/customer_login/" style="margin-left:165px" title="Customer Login">Customer</a>
+    </div>
+  </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'customer_navbar.html' %}
+{% load static %}
+{% block title %} Petrol Pump Management System {% endblock %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<body style="background-color:#9ED2BE">
+<div class="container mt-4">
+    <h1 class="text-center"><u>All Pumps List</u></h1>
+    <table class="table table-hover" id="example">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Owner Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Pump Name</th>
+                <th>Pump Address</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for o in owners %}
+            <tr>
+                <td>{{o.id}}.</td>
+                <td>{{o.user.get_full_name}}</td>
+                <td>{{o.phone}}</td>
+                <td>{{o.user.email}}</td>
+                <td>{{o.pump_name}}</td>
+                <td>{{o.address}}</td>
+                <td>
+                    <a href="/add_booking_details/{{o.id}}/" class="btn btn-danger" title="Book Slot">Book Slot</a>
+                    <a href="/add_puc/{{o.id}}/" class="btn btn-danger" title="Apply PUC">Apply PUC</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</body>
+{% endblock %}

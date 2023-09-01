@@ -1,0 +1,95 @@
+{% extends 'owner_navbar.html' %}
+{% load static %}
+{% block title %} Petrol Pump Management System {% endblock %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<body style="background-color:#9ED2BE">
+<div class="container">
+    <form method="POST" enctype="multipart/form-data"> {% csrf_token %}
+    <div class="row mt-4">
+        <div class="form-group col-md-12">
+            <label><i style="font-weight: bold;">Employee ID</i></label>
+            <input type="text" class="form-control mt-2" name="eid" placeholder="Enter Employee ID" required>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="form-group col-md-6">
+            <label><i style="font-weight: bold;">First Name</i></label>
+            <input type="text" class="form-control mt-2" name="first_name" placeholder="Enter employee first name" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label><i style="font-weight: bold;">Last Name</i></label>
+            <input type="text" class="form-control mt-2" name="last_name" placeholder="Enter employee last name" required>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="form-group col-md-6">
+            <label><i style="font-weight: bold;">Gender</i></label>
+            <select name="gender" class="form-control mt-2" required>
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label><i style="font-weight: bold;">Email</i></label>
+            <input type="email" class="form-control mt-2" name="email" placeholder="Enter Email of Employee" required>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="form-group col-md-6">
+            <label><i style="font-weight: bold;">Phone</i></label>
+            <input type="text" class="form-control mt-2" name="phone" placeholder="Enter Phone of Employee" required pattern="^[6789]\d{9}$">
+        </div>
+        <div class="form-group col-md-6">
+            <label><i style="font-weight: bold;">Address</i></label>
+            <input type="text" class="form-control mt-2" name="address" placeholder="Enter Address of Employee" required>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="form-group col-md-6">
+            <label><i style="font-weight: bold;">Birth Date</i></label>
+            <input type="date" class="form-control mt-2" name="birth_date" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label><i style="font-weight: bold;">Hire Date</i></label>
+            <input type="date" class="form-control mt-2" name="hire_date" required>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="form-group col-md-6">
+            <label><i style="font-weight: bold;">Salary</i></label>
+            <input type="number" class="form-control mt-2" name="salary" placeholder="Enter Salary of Employee" min="7500" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label><i style="font-weight: bold;">Password</i></label>
+            <input type="password" class="form-control mt-2" name="password" placeholder="Enter Password of Employee" required>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="form-group col-md-6">
+            <label><i style="font-weight: bold;">Employee Image</i></label>
+            <input type="file" class="form-control mt-2" name="image" required>
+        </div>
+    </div>
+        <input type="hidden" name="uid" value="{{user.owner.id}}">
+    <button type="submit" class="btn btn-warning mt-4">Add Employee</button>
+</form>
+</div>
+</body>
+{% endblock %}
+{% block js %}
+<script>
+    {% if alert %}
+    alert("Employee is added successfully.")
+    document.location = "/view_employees"
+    {% endif %}
+</script>
+{% endblock %}

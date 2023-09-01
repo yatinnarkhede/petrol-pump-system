@@ -1,0 +1,39 @@
+{% extends 'owner_navbar.html' %}
+{% load static %}
+{% block title %} Petrol Pump Management System {% endblock %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<body style="background-color:#9ED2BE">
+<div class="container mt-4">
+    <h1 class="text-center"><u>All Machines List</u></h1>
+    <table class="table table-hover" id="example">
+        <thead>
+            <tr>
+                <th>Machine#</th>
+                <th>Type</th>
+                <th>Company</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for m in machines %}
+            <tr>
+                <td>{{m.machine_no}}.</td>
+                <td>{{m.machine_type}}</td>
+                <td>{{m.machine_company}}</td>
+                <td>{{m.machine_desc}}</td>
+                <td>{{m.machine_price}}</td>
+                <td>
+                    <a href="/view_machine_details/{{m.machine_no}}/" class="btn btn-danger" title="View"><i class="fa fa-eye"></i></a>
+                </td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</body>
+{% endblock %}

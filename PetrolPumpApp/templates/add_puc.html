@@ -1,0 +1,31 @@
+{% extends 'customer_navbar.html' %}
+{% load static %}
+{% block title %} Petrol Pump Management System {% endblock %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<body style="background-color:#9ED2BE">
+<div class="container">
+    <form method="POST"> {% csrf_token %}
+
+    <div class="row mt-4">
+        <div class="form-group col-md-12">
+            <label><i style="font-weight: bold;">Vehicle#</i></label>
+            <input type="text" class="form-control mt-2" name="vehicle_no" pattern="^[A-Z]{2}\d{2} [A-Z]{2} \d{4}$" placeholder="Enter vehicle# e.g. MH14 FG 2604" required>
+        </div>
+    </div>
+
+    <input type="hidden" name="uid" value="{{uid}}">
+    <button type="submit" class="btn btn-warning mt-4">Apply PUC</button>
+</form>
+</div>
+</body>
+{% endblock %}
+{% block js %}
+<script>
+    {% if alert %}
+    alert("Your have applied for PUC successfully.")
+    document.location = "/view_all_puc"
+    {% endif %}
+</script>
+{% endblock %}
